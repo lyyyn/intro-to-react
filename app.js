@@ -27,10 +27,8 @@ class App extends React.Component {
 
     //change to class property
     clickHandler = () => {
-        this.setState({price:10}, () => {
-            console.log(this.state.price);
-        });
-        
+        this.state.price = 10;
+        console.log(this.state.price);
     }
 
     render() {
