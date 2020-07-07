@@ -35,7 +35,7 @@ class App extends React.Component {
                 <Greet Name="Bruce" heroName="Batman">
                     This is Batman. Children of Greet.
                 </Greet>
-                <button onClick={() => this.clickHandler()}>Click</button>
+                <button onClick={this.clickHandler.bind(this)}>Click</button>
                 <h1> Big Time Shopping </h1>
                 <ol>
                     {this.state.products.map(product => {
