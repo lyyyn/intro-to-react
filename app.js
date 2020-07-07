@@ -2,6 +2,20 @@ const message = 'Hello World 123';
 
 console.log(products);
 
+class Greet extends React.Component {
+    render() {
+        return (
+            <div>
+                <h2>
+                    Hello {this.props.Name} a.k.a. {this.props.heroName}
+                </h2>
+                <p>{this.props.children}</p>
+            </div>
+
+        )
+    }
+}
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -12,12 +26,19 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <Greet Name="Bruce" heroName="Batman">
+                    This is Batman. Children of Greet.
+                </Greet>
                 <h1> Big Time Shopping </h1>
-                <ul>
-                    {this.state.products.map(product => <li>{product.name}</li>)}
-                </ul>
+                <ol>
+                    {this.state.products.map(product => {
+                        return (
+                            <li>{product.name} (SGD{product.price})</li>
+                        )
+                    })}
+                </ol>
+                
             </div>
-
         )
     }
 }
