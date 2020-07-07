@@ -21,7 +21,9 @@ class App extends React.Component {
         super(props);
         this.state = {
             products: products,
+            name: '',
             price: 8,
+            description: '',
             value: ''
         }
     }
@@ -37,6 +39,19 @@ class App extends React.Component {
         console.log(event.target.id, ': ', event.target.value);
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const newItem = {
+            name: this.state.name,
+            price: this.state.price,
+            description: this.state.description
+        };
+        this.setState({
+            products: [newItem, ...this.state.products], 
+            price: '',description:'',name:''
+        });
+    }
+
     render() {
         return (
             <div>
@@ -45,7 +60,7 @@ class App extends React.Component {
                 </Greet>
                 <button onClick={this.clickHandler}>Click</button>
                 <h1> Big Time Shopping </h1>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor='name'>Name</label>
                     <input type='text' value={this.state.name} onChange={this.handleChange} id='name' placeholder='name of product' />
                     <br />
@@ -54,6 +69,7 @@ class App extends React.Component {
                     <br />
                     <label htmlFor='description'>Description</label>
                     <input type='textarea' value={this.state.description} onChange={this.handleChange} id='description' />
+                    <input type="submit" />
                 </form>
                 <div>
                     <h2>Preview our new item</h2>
