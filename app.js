@@ -1,11 +1,28 @@
 const message = 'Hello World 123';
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const div = document.querySelector('.container')
-//   div.innerHTML = '<h1>' + message + '</h1>'
-// })
+console.log(products);
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            products: products
+        }
+    }
+    render() {
+        return (
+            <div>
+                <h1> Big Time Shopping </h1>
+                <ul>
+                    {this.state.products.map(product => <li>{product.name}</li>)}
+                </ul>
+            </div>
+
+        )
+    }
+}
 
 ReactDOM.render(
-    <h1> {message} </h1>,
+    <App />,
     document.querySelector('.container')
 )
