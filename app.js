@@ -20,12 +20,13 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: products
+            products: products,
+            price: 8
         }
     }
 
     clickHandler() {
-        console.log("Hello World");
+        console.log(this.state.price);
     }
 
     render() {
@@ -34,7 +35,7 @@ class App extends React.Component {
                 <Greet Name="Bruce" heroName="Batman">
                     This is Batman. Children of Greet.
                 </Greet>
-                <button onClick={this.clickHandler}>Click</button>
+                <button onClick={() => this.clickHandler()}>Click</button>
                 <h1> Big Time Shopping </h1>
                 <ol>
                     {this.state.products.map(product => {
