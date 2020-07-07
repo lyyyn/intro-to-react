@@ -23,12 +23,18 @@ class App extends React.Component {
             products: products
         }
     }
+
+    clickHandler() {
+        console.log("Hello World");
+    }
+
     render() {
         return (
             <div>
                 <Greet Name="Bruce" heroName="Batman">
                     This is Batman. Children of Greet.
                 </Greet>
+                <button onClick={this.clickHandler}>Click</button>
                 <h1> Big Time Shopping </h1>
                 <ol>
                     {this.state.products.map(product => {
@@ -37,7 +43,6 @@ class App extends React.Component {
                         )
                     })}
                 </ol>
-                
             </div>
         )
     }
