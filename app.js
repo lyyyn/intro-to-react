@@ -26,16 +26,15 @@ class App extends React.Component {
         }
     }
 
-    //change to class property
     clickHandler = () => {
         this.state.price = 10;
         console.log(this.state.price);
     }
 
-    //change to class property
     handleChange = (event) => {
-        this.setState({value: event.target.value});
-        console.log(event.target.value);
+        this.setState({ [event.target.id]: event.target.value });
+        console.log(this.state);
+        console.log(event.target.id, ': ', event.target.value);
     }
 
     render() {
@@ -47,8 +46,21 @@ class App extends React.Component {
                 <button onClick={this.clickHandler}>Click</button>
                 <h1> Big Time Shopping </h1>
                 <form>
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    <label htmlFor='name'>Name</label>
+                    <input type='text' value={this.state.name} onChange={this.handleChange} id='name' placeholder='name of product' />
+                    <br />
+                    <label htmlFor='price'>Price</label>
+                    <input type='number' value={this.state.price} onChange={this.handleChange} id='price' />
+                    <br />
+                    <label htmlFor='description'>Description</label>
+                    <input type='textarea' value={this.state.description} onChange={this.handleChange} id='description' />
                 </form>
+                <div>
+                    <h2>Preview our new item</h2>
+                    <h3>{this.state.name}</h3>
+                    <h4>{this.state.price}</h4>
+                    <h5>{this.state.description}</h5>
+                </div>
                 <ol>
                     {this.state.products.map(product => {
                         return (
