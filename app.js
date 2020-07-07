@@ -23,10 +23,10 @@ class App extends React.Component {
             products: products,
             price: 8
         }
-        this.clickHandler=this.clickHandler.bind(this);
     }
 
-    clickHandler() {
+    //change to class property
+    clickHandler = () => {
         console.log(this.state.price);
     }
 
