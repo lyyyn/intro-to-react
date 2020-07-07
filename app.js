@@ -21,7 +21,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             products: products,
-            price: 8
+            price: 8,
+            value: ''
         }
     }
 
@@ -29,6 +30,12 @@ class App extends React.Component {
     clickHandler = () => {
         this.state.price = 10;
         console.log(this.state.price);
+    }
+
+    //change to class property
+    handleChange = (event) => {
+        this.setState({value: event.target.value});
+        console.log(event.target.value);
     }
 
     render() {
@@ -39,6 +46,9 @@ class App extends React.Component {
                 </Greet>
                 <button onClick={this.clickHandler}>Click</button>
                 <h1> Big Time Shopping </h1>
+                <form>
+                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                </form>
                 <ol>
                     {this.state.products.map(product => {
                         return (
