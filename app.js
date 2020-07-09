@@ -24,7 +24,8 @@ class App extends React.Component {
             name: '',
             price: 8,
             description: '',
-            value: ''
+            value: '',
+            isHiring: true
         }
     }
 
@@ -60,6 +61,9 @@ class App extends React.Component {
                 </Greet>
                 <button onClick={this.clickHandler}>Click</button>
                 <h1> Big Time Shopping </h1>
+                
+                {!this.state.isHiring ? <h2>Yes, we are hiring </h2>: <h2>Sorry, try again tomorrow</h2>}
+
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='name'>Name</label>
                     <input type='text' value={this.state.name} onChange={this.handleChange} id='name' placeholder='name of product' />
