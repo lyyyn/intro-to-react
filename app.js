@@ -27,11 +27,19 @@ class App extends React.Component {
             value: '',
             isHiring: true
         }
+
+        this.toggleHiring = this.toggleHiring.bind(this);
     }
 
     clickHandler = () => {
         this.state.price = 10;
         console.log(this.state.price);
+    }
+
+    toggleHiring = () => {
+        this.setState({isHiring: !this.state.isHiring});
+
+        console.log(this.state.isHiring);
     }
 
     handleChange = (event) => {
@@ -62,7 +70,10 @@ class App extends React.Component {
                 <button onClick={this.clickHandler}>Click</button>
                 <h1> Big Time Shopping </h1>
                 
+                <p>
                 {!this.state.isHiring ? <h2>Yes, we are hiring </h2>: <h2>Sorry, try again tomorrow</h2>}
+                <button onClick={this.toggleHiring}>Toggle Hiring</button>
+                </p>
 
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='name'>Name</label>
