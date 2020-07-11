@@ -63,16 +63,16 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Greet Name="Bruce" heroName="Batman">
+                {/* <Greet Name="Bruce" heroName="Batman">
                     This is Batman. Children of Greet.
-                </Greet>
-                <button onClick={this.clickHandler}>Click</button>
+                </Greet> */}
+                {/* <button onClick={this.clickHandler}>Click</button> */}
                 <h1> Big Time Shopping </h1>
 
-                <p>
+                {/* <p>
                     {!this.state.isHiring ? <h2>Yes, we are hiring </h2> : <h2>Sorry, try again tomorrow</h2>}
                     <button onClick={this.toggleHiring}>Toggle Hiring</button>
-                </p>
+                </p> */}
 
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='name'>Name</label>
@@ -85,19 +85,29 @@ class App extends React.Component {
                     <input type='textarea' value={this.state.description} onChange={this.handleChange} id='description' />
                     <input type="submit" />
                 </form>
-                <div>
+                <div className='preview'>
                     <h2>Preview our new item</h2>
                     <h3>{this.state.name}</h3>
                     <h4>{this.state.price}</h4>
                     <h5>{this.state.description}</h5>
                 </div>
-                <ol>
-                    {this.state.products.map(product => {
-                        return (
-                            <ProductList product={product} />
-                        )
-                    })}
-                </ol>
+                <div className="products">
+                    <h3>Please Purchase our Excellent Products</h3>
+                    <ul>
+                        {this.state.products.map(product => {
+                            return (
+                                <ProductList product={product} />
+                            )
+                        }
+                        )}
+                    </ul>
+                </div>
+                <div className='cart'>
+                    <h3> Shopping Cart </h3>
+                    <ul>
+
+                    </ul>
+                </div>
             </div>
         )
     }
