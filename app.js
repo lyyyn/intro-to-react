@@ -16,6 +16,14 @@ class Greet extends React.Component {
     }
 }
 
+class ProductList extends React.Component {
+    render() {
+        return (
+            <li>{this.props.product.name} (SGD{this.props.product.price})</li>
+        )
+    }
+}
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -95,7 +103,7 @@ class App extends React.Component {
                 <ol>
                     {this.state.products.map(product => {
                         return (
-                            <li>{product.name} (SGD{product.price})</li>
+                            <ProductList product={product} />
                         )
                     })}
                 </ol>
