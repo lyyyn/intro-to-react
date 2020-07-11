@@ -11,17 +11,29 @@ class Greet extends React.Component {
                 </h2>
                 <p>{this.props.children}</p>
             </div>
-
         )
     }
 }
 
 class ProductList extends React.Component {
-    render() {
-        return (
-            <li>{this.props.product.name} (SGD{this.props.product.price})</li>
-        )
+    constructor(props) {
+        super(props);
+        this.state = {
+            inShoppingCart: false
+        }
+
+        this.toggleCart = this.toggleCart.bind(this);
     }
+
+    toggleCart = () => {
+        this.setState({ inShoppingCart: !this.state.inShoppingCart })
+    }
+
+render() {
+    return (
+        <li onClick={this.toggleCart}>{this.props.product.name }  {this.props.product.price} {this.state.inShoppingCart ? <span> is in the shopping cart! </span> : ''}</li>
+    )
+}
 }
 
 class App extends React.Component {
@@ -45,7 +57,7 @@ class App extends React.Component {
     }
 
     toggleHiring = () => {
-        this.setState({isHiring: !this.state.isHiring});
+        this.setState({ isHiring: !this.state.isHiring });
 
         console.log(this.state.isHiring);
     }
@@ -64,8 +76,8 @@ class App extends React.Component {
             description: this.state.description
         };
         this.setState({
-            products: [newItem, ...this.state.products], 
-            price: '',description:'',name:''
+            products: [newItem, ...this.state.products],
+            price: '', description: '', name: ''
         });
     }
 
@@ -77,10 +89,10 @@ class App extends React.Component {
                 </Greet>
                 <button onClick={this.clickHandler}>Click</button>
                 <h1> Big Time Shopping </h1>
-                
+
                 <p>
-                {!this.state.isHiring ? <h2>Yes, we are hiring </h2>: <h2>Sorry, try again tomorrow</h2>}
-                <button onClick={this.toggleHiring}>Toggle Hiring</button>
+                    {!this.state.isHiring ? <h2>Yes, we are hiring </h2> : <h2>Sorry, try again tomorrow</h2>}
+                    <button onClick={this.toggleHiring}>Toggle Hiring</button>
                 </p>
 
                 <form onSubmit={this.handleSubmit}>
