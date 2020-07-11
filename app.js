@@ -24,10 +24,12 @@ class App extends React.Component {
             price: 8,
             description: '',
             value: '',
-            isHiring: true
+            isHiring: true,
+            cartItems: []
         }
 
         this.toggleHiring = this.toggleHiring.bind(this);
+        this.addToCart = this.addToCart.bind(this);
     }
 
     clickHandler = () => {
@@ -39,6 +41,10 @@ class App extends React.Component {
         this.setState({ isHiring: !this.state.isHiring });
 
         console.log(this.state.isHiring);
+    }
+
+    addToCart = (item) => {
+        this.setState({ cartItems: [item, ...this.state.cartItems] })
     }
 
     handleChange = (event) => {
@@ -96,7 +102,7 @@ class App extends React.Component {
                     <ul>
                         {this.state.products.map(product => {
                             return (
-                                <ProductList product={product} />
+                                <ProductList product={product} handleAdd={this.addToCart} />
                             )
                         }
                         )}
@@ -105,7 +111,12 @@ class App extends React.Component {
                 <div className='cart'>
                     <h3> Shopping Cart </h3>
                     <ul>
-
+                        {this.state.cartItems.map(item => {
+                            return (
+                                <ShoppingCart product={item} />
+                            )
+                        }
+                        )}
                     </ul>
                 </div>
             </div>
